@@ -10,13 +10,72 @@ module transformation notes for the tar-fs project
 
 
 
+
+
 --------------- index.js ---------------
 
-<--- ( )
 
+No sanitize step was necessary for this file. 
+
+
+
+require to import
+<--- (1-7)
+var chownr = require('chownr')
+var tar = require('tar-stream')
+var pump = require('pump')
+var mkdirp = require('mkdirp')
+var fs = require('fs')
+var path = require('path')
+var os = require('os')
 ---
-
+import chownr from 'chownr'
+import tar from 'tar-stream'
+import pump from 'pump'
+import mkdirp from 'mkdirp'
+import fs from 'fs'
+import path from 'path'
+import os from 'os'
 --->
+
+
+(61)
+<---
+exports.pack = function (cwd, opts) {
+---
+export const pack = function (cwd, opts) {
+--->
+
+
+(172)
+<---
+exports.extract = function (cwd, opts) {
+---
+export const extract = function (cwd, opts) {
+--->
+
+
+Special case: although the syntax used in the exports would imply that this uses named exports, 
+//and it has no default exports, it is used in tests/index.js as if it has a default exports. 
+//This is because of the way CommonJS handles module loading. (as objects)
+//The siimplest way to remedy this, is to create the "named default export" ourselves.
+//This of course is only done when there ARE named exports and there is NOT a default export. 
+//It seems prudent to create this export regardless of whether the project uses it this way, 
+//as it has the possibility of being more interoperable with other module systems and code
+--especially if transforming two projects where one does not know the behavior of the other pre-transformation. (consistency)
+
+//default named exports: (bottom of file)
+<----
+
+const defaultExports = {};
+
+defaultExports.pack = pack;
+defaultExports.extract = extract;
+
+export default defaultExports;
+
+---->
+
 |__
 
 _________________________________________
@@ -29,12 +88,46 @@ _________________________________________
 
 --------------- teset/index.js ---------------
 
-<--- ( )
-
+////////SANITIZE////////
+<--- (3)
+var tar = require('../index')
 ---
-
+var tar = require('../index.js')
 --->
-|__
+
+
+Added
+<---
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename   =  fileURLToPath(import.meta.url)
+const __dirname  =  dirname(__filename)
+--->
+////////DONE////////
+
+
+require to import
+<--- (1-7)
+var test = require('tape')
+var rimraf = require('rimraf')
+var tar = require('../index.js')
+var tarStream = require('tar-stream')
+var path = require('path')
+var fs = require('fs')
+var os = require('os')
+---
+import test from 'tape'
+import rimraf from 'rimraf'
+import tar from '../index.js'
+import tarStream from 'tar-stream'
+import path from 'path'
+import fs from 'fs'
+import os from 'os'
+--->
+
+
+|__there was the special case during sanitizing of adding __dirname, the nodejs variable lost by using es modules
 
 _________________________________________
 

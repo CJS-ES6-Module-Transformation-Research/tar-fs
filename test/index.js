@@ -1,10 +1,16 @@
-var test = require('tape')
-var rimraf = require('rimraf')
-var tar = require('../index')
-var tarStream = require('tar-stream')
-var path = require('path')
-var fs = require('fs')
-var os = require('os')
+import test from 'tape'
+import rimraf from 'rimraf'
+import tar from '../index.js'
+import tarStream from 'tar-stream'
+import path from 'path'
+import fs from 'fs'
+import os from 'os'
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename   =  fileURLToPath(import.meta.url)
+const __dirname  =  dirname(__filename)
 
 var win32 = os.platform() === 'win32'
 

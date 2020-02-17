@@ -58,7 +58,7 @@ var strip = function (map, level) {
   }
 }
 
-exports.pack = function (cwd, opts) {
+export const pack = function (cwd, opts) {
   if (!cwd) cwd = '.'
   if (!opts) opts = {}
 
@@ -169,7 +169,7 @@ var processUmask = function () {
   return process.umask ? process.umask() : 0
 }
 
-exports.extract = function (cwd, opts) {
+export const extract = function (cwd, opts) {
   if (!cwd) cwd = '.'
   if (!opts) opts = {}
 
@@ -346,3 +346,10 @@ function mkdirfix (name, opts, cb) {
     }
   })
 }
+
+const defaultExports = {}
+
+defaultExports.pack = pack
+defaultExports.extract = extract
+
+export default defaultExports

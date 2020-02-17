@@ -1,0 +1,71 @@
+npx tape --require 'esm' test/index.js
+
+TAP version 13
+# copy a -> copy/a
+ok 1 should be equivalent
+ok 2 should be equivalent
+ok 3 should be equivalent
+ok 4 should be equivalent
+ok 5 should be equivalent
+# copy b -> copy/b
+ok 6 should be equivalent
+ok 7 should be equivalent
+ok 8 should be equivalent
+ok 9 should be equivalent
+ok 10 should be truthy
+ok 11 should be equivalent
+ok 12 should be equivalent
+ok 13 should be equivalent
+# symlink
+ok 14 should be equivalent
+ok 15 should be equivalent
+ok 16 should be equivalent
+ok 17 should be equivalent
+ok 18 should be equivalent
+# follow symlinks
+ok 19 should be equivalent
+ok 20 should be equivalent
+ok 21 should be equivalent
+ok 22 should be equivalent
+ok 23 should be equivalent
+# strip
+ok 24 should be equivalent
+ok 25 should be equivalent
+# strip + map
+ok 26 should be equivalent
+ok 27 should be equivalent
+# map + dir + permissions
+ok 28 should be equivalent
+ok 29 should be equivalent
+# specific entries
+ok 30 should be equivalent
+ok 31 should not be equivalent
+ok 32 should not be equivalent
+ok 33 should not be equivalent
+ok 34 should be equivalent
+ok 35 should be equivalent
+# check type while mapping header on packing
+ok 36 should be equivalent
+ok 37 should be equivalent
+ok 38 should be equivalent
+# finish callbacks
+ok 39 All entries have been packed
+ok 40 The finish hook passes the pack
+ok 41 should be equal
+# not finalizing the pack
+ok 42 should be equivalent
+ok 43 should be equivalent
+# do not extract invalid tar
+ok 44 should be truthy
+ok 45 should be truthy
+# no abs hardlink targets
+ok 46 had error
+ok 47 no error
+ok 48 should be equivalent
+
+1..48
+# tests 48
+# pass  48
+
+# ok
+

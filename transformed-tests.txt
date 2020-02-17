@@ -1,0 +1,9 @@
+
+> tar-fs@2.0.0 test /Users/sam/Dropbox/Spring_20/research_proj/org/projs/tar-fs
+> standard && tape test/index.js
+
+  /Users/sam/Dropbox/Spring_20/research_proj/org/projs/tar-fs/index.js:350:26: Extra semicolon.
+  /Users/sam/Dropbox/Spring_20/research_proj/org/projs/tar-fs/index.js:352:27: Extra semicolon.
+  /Users/sam/Dropbox/Spring_20/research_proj/org/projs/tar-fs/index.js:353:33: Extra semicolon.
+  /Users/sam/Dropbox/Spring_20/research_proj/org/projs/tar-fs/index.js:355:30: Extra semicolon.
+  /Users/sam/Dropbox/Spring_20/research_proj/org/projs/tar-fs/test/index.js:12:37: Parsing error: Unexpected token import
