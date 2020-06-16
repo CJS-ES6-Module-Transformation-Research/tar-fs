@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "tar-fs",
   "version": "2.0.0",
   "description": "filesystem bindings for tar-stream",
@@ -23,7 +24,7 @@
     "tape": "^4.9.2"
   },
   "scripts": {
-    "test": "standard && tape test/index.js"
+    "test": "tape test/index.js"
   },
   "bugs": {
     "url": "https://github.com/mafintosh/tar-fs/issues"
